@@ -51,7 +51,6 @@ class _CadastroState extends State<Cadastro> {
                     style: ElevatedButton.styleFrom(
                         primary: Color(0xff00C29D),
                         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-
                         shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(4)),
                         )

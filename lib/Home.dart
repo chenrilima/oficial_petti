@@ -46,7 +46,6 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: Container (
-
         padding: EdgeInsets.all(16),
         child: _screens[_currentIndex],
       ),
