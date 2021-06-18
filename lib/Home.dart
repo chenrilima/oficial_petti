@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:oficial_petti/screens/inicio.dart';
-import 'screens/curriculum.dart';
-import 'screens/Companies.dart';
-import 'screens/account.dart';
+import 'package:oficial_petti/Screens/Companies.dart';
+import 'package:oficial_petti/Screens/account.dart';
+import 'package:oficial_petti/Screens/curriculum.dart';
+import 'package:oficial_petti/Screens/inicio.dart';
+
 
 class Home extends StatefulWidget {
 

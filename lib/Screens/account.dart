@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:oficial_petti/screens/cadastro.dart';
+import 'package:oficial_petti/Screens/cadastro.dart';
+
 
 
 
