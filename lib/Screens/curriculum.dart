@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oficial_petti/Widgets/buttons.dart';
+import 'package:oficial_petti/Widgets/cards.dart';
+import 'package:oficial_petti/Widgets/text_formfield.dart';
 
 class Curriculum extends StatefulWidget {
   @override
@@ -10,97 +13,26 @@ class _CurriculumState extends State<Curriculum> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form (
-        child: ListView(
-          padding: EdgeInsets.all(16),
-          children: [
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: "CRMV"
+      body: Container(
+        child: ContainerCard(
+          width: 300,
+          content: ListView(
+            padding: EdgeInsets.all(16),
+            children: [
+              TextFormFields(
+                hintText: 'test',
               ),
-              // ignore: missing_return
-              validator: (text){
-                if (text.isEmpty) return "Preencha!";
-              },
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: "Especialidades"
+              TextFormFields(
+                hintText: 'test',
               ),
-              // ignore: missing_return
-              validator: (text){
-                if (text.isEmpty) return "Preencha";
-              },
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: "Cidade"
-              ),
-              // ignore: missing_return
-              validator: (text){
-                if (text.isEmpty) return "Preencha";
-              },
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: "Estado"
-              ),
-              // ignore: missing_return
-              validator: (text){
-                if (text.isEmpty) return "Preencha ";
-              },
-            ),
-            SizedBox(height: 16.0),
-            TextFormField(
-              decoration: InputDecoration(
-                  hintText: "Descrição do Perfil"
-              ),
-              // ignore: missing_return
-              validator: (text){
-                if (text.isEmpty) return "Preencha ";
-              },
-            ),
-
-            SizedBox(height: 60.0),
-            Column(
-          children: [
-          ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              primary: Color(0xff00C29D),
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-              shape: BeveledRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
-              )
+                Buttons(
+                  text: 'test',
+                  onPressed: (){},
+                )
+              ]
           ),
-          child: Text("Carregar Foto"),
-          onPressed: () {},
+          ),
         ),
-      ]
-            ),
-
-            SizedBox(height: 10.0),
-            Column(
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Color(0xff00C29D),
-                        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-
-                        shape: BeveledRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4)),
-                        )
-                    ),
-                    child: Text("Cadastrar CV"),
-                    onPressed: () {},
-                  ),
-                ]
-            ),
-          ],
-        ),
-      ),
-    );
+      );
   }
 }
