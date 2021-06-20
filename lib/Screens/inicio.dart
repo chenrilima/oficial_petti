@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oficial_petti/Home.dart';
+import 'package:oficial_petti/home.dart';
 
 class Inicio extends StatefulWidget {
   @override

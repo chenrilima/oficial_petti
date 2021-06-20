@@ -11,14 +11,17 @@ class Buttons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          primary: AppColors.green,// background
-          onPrimary: Colors.white, // foreground
-          shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(8.0))
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            primary: AppColors.green,// background
+            onPrimary: Colors.white, // foreground
+            shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(8.0))
+        ),
+        onPressed: onPressed,
+        child: Text(text),
       ),
-      onPressed: onPressed,
-      child: Text(text),
     );
   }
 }
