@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:oficial_petti/Screens/Companies.dart';
 import 'package:oficial_petti/Screens/account.dart';
-import 'package:oficial_petti/Screens/professional_registration.dart';
-import 'package:oficial_petti/Screens/inicio.dart';
+import 'package:oficial_petti/Screens/register_professional.dart';
+import 'package:oficial_petti/Screens/home.dart';
 import 'package:oficial_petti/Utils/appcolors.dart';
 
-class Home extends StatefulWidget {
+import 'Screens/register_company.dart';
+
+class AllScreens extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _AllScreensState createState() => _AllScreensState();
 }
 
-class _HomeState extends State<Home> {
+class _AllScreensState extends State<AllScreens> {
   int _currentIndex = 0;
   String _result = "";
 
   @override
   Widget build(BuildContext context) {
     List<Widget> _screens = <Widget>[
-      Inicio(),
-      ProfessionalRegistration(),
-      Companies(),
+      Home(),
+      RegisterProfessional(),
+      RegisterCompany(),
       Account()
     ];
 
