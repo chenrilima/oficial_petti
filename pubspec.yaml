@@ -30,11 +30,13 @@ dependencies:
   cupertino_icons: ^1.0.3
   mobx: ^2.0.1
   google_fonts: ^2.1.0
+  provider: ^5.0.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -57,6 +59,10 @@ flutter:
     - images/vetlife.png
     - images/womam.png
     - images/img-perfil.png
+    - images/facebook.png
+    - images/google.png
+    - images/img-professional.png
+    - images/img-company.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

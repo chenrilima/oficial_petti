@@ -1,13 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:oficial_petti/Screens/filter.dart';
+import 'package:oficial_petti/Screens/login.dart';
+import 'package:oficial_petti/Screens/company_professional.dart';
+import 'package:oficial_petti/Screens/register.dart';
 import 'package:oficial_petti/Screens/register_company.dart';
 import 'package:oficial_petti/Utils/appcolors.dart';
+import 'package:oficial_petti/Utils/param.dart';
 import 'package:oficial_petti/Widgets/background.dart';
 import 'package:oficial_petti/Widgets/buttons.dart';
 import 'package:oficial_petti/Widgets/cards.dart';
 import 'package:oficial_petti/Widgets/custom_dialog_box.dart';
 import 'package:oficial_petti/all_screens.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,6 +24,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     double widscreen = MediaQuery.of(context).size.width;
+    Param param =
+    Provider.of<Param>(context, listen: false);
+
     return Background(
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,73 +44,174 @@ class _HomeState extends State<Home> {
                   fontSize: 24,
                   color: AppColors.white,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
           ),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "images/filter.png",
-                  width: 50,
-                  height: 50,
-                ),
-                Text(
-                  'Filtrar',
-                  style: GoogleFonts.roboto(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    color: AppColors.white,
+          GestureDetector(
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "images/filter.png",
+                    width: 50,
+                    height: 50,
                   ),
-                )
-              ],
+                  Text(
+                    'Filtrar',
+                    style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      color: AppColors.white,
+                    ),
+                  )
+                ],
+              ),
             ),
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Filter()),
+              );
+            },
           ),
           Column(
             children: [
-              ContainerCard(
-                width: widscreen * 1,
-                content: Container(
-                  padding: const EdgeInsets.all(11),
-                  height: 135,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 110,
-                            height: 50,
-                            child: Image.asset(
-                              "images/womam.png",
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(top: 7),
-                            width: 135,
-                            height: 62,
-                            child: Text(
-                              'Fulana'
-                              '\nCRMV - 1234-5'
-                              '\nClinica Geral Ortopedista'
-                              '\nSão Bernado do Campo - SP',
-                              style: GoogleFonts.roboto(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: AppColors.black,
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    param.company = false;
+                  });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CompanyProfessional()),
+                  );
+                },
+                child: ContainerCard(
+                  width: widscreen * 1,
+                  content: Container(
+                    padding: const EdgeInsets.all(11),
+                    height: 135,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 110,
+                              height: 50,
+                              child: Image.asset(
+                                "images/womam.png",
+                                fit: BoxFit.contain,
                               ),
                             ),
-                          )
-                        ],
-                      ),
-                      Container(
+                            Container(
+                              padding: const EdgeInsets.only(top: 7),
+                              width: 135,
+                              height: 62,
+                              child: Text(
+                                'Fulana'
+                                '\nCRMV - 1234-5'
+                                '\nClinica Geral Ortopedista'
+                                '\nSão Bernado do Campo - SP',
+                                style: GoogleFonts.roboto(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: AppColors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        Container(
 
-                        child: Column(
+                          child: Column(
 
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Container(
+                                  width: 175,
+                                  child: Text(
+                                    'Bla sobre a pessoa, uma descrição curta sobre suas competências.',
+                                    style: GoogleFonts.roboto(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 10,
+                                      color: AppColors.black,
+                                    ),
+                                  )),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 41.0),
+                                child: Buttons(
+                                  width: 15,
+                                  heigth: 10,
+                                  text: 'Entrar em contato',
+                                  onPressed: () => _showDialog(),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    param.company = true;
+                  });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CompanyProfessional()),
+                  );
+                },
+                child: ContainerCard(
+                  width: widscreen * 1,
+                  content: Container(
+                    padding: const EdgeInsets.all(11),
+                    height: 135,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 110,
+                              height: 50,
+                              child: Image.asset(
+                                "images/vetlife.png",
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(top: 7),
+                              width: 135,
+                              height: 60,
+                              child: Text(
+                                'Vet Life'
+                                '\nEndereço'
+                                '\nServiços prestados'
+                                '\nHorario de atendimento',
+                                style: GoogleFonts.roboto(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: AppColors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Container(
@@ -115,88 +225,18 @@ class _HomeState extends State<Home> {
                                   ),
                                 )),
                             Padding(
-                              padding: const EdgeInsets.only(top: 41.0),
+                              padding: const EdgeInsets.only(top: 8.0),
                               child: Buttons(
                                 width: 15,
                                 heigth: 10,
                                 text: 'Entrar em contato',
-                                onPressed: () => _showDialog(),
+                                onPressed: () {},
                               ),
                             )
                           ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ContainerCard(
-                width: widscreen * 1,
-                content: Container(
-                  padding: const EdgeInsets.all(11),
-                  height: 135,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 110,
-                            height: 50,
-                            child: Image.asset(
-                              "images/vetlife.png",
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(top: 7),
-                            width: 135,
-                            height: 60,
-                            child: Text(
-                              'Vet Life'
-                              '\nEndereço'
-                              '\nServiços prestados'
-                              '\nHorario de atendimento',
-                              style: GoogleFonts.roboto(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: AppColors.black,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Container(
-                              width: 175,
-                              child: Text(
-                                'Bla sobre a pessoa, uma descrição curta sobre suas competências.',
-                                style: GoogleFonts.roboto(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 10,
-                                  color: AppColors.black,
-                                ),
-                              )),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Buttons(
-                              width: 15,
-                              heigth: 10,
-                              text: 'Entrar em contato',
-                              onPressed: () {},
-                            ),
-                          )
-                        ],
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -285,9 +325,10 @@ class _HomeState extends State<Home> {
         // return object of type Dialog
         return AlertDialog(
           contentPadding: const EdgeInsets.all(16),
+
           content: Container(
+            width: 270,
             height: 220,
-            width: 250,
             child: Column(
               children: [
                 Container(
@@ -308,7 +349,7 @@ class _HomeState extends State<Home> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegisterCompany()),
+                    MaterialPageRoute(builder: (context) => Login()),
                   );
                 }),
             SizedBox(width: 5,),
@@ -319,7 +360,7 @@ class _HomeState extends State<Home> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegisterCompany()),
+                    MaterialPageRoute(builder: (context) => Register()),
                   );
                 }),
           ],
