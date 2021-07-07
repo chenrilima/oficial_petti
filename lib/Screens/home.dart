@@ -7,6 +7,7 @@ import 'package:oficial_petti/Screens/company_professional.dart';
 import 'package:oficial_petti/Screens/register.dart';
 import 'package:oficial_petti/Screens/register_company.dart';
 import 'package:oficial_petti/Utils/appcolors.dart';
+import 'package:oficial_petti/Utils/appfonts.dart';
 import 'package:oficial_petti/Utils/param.dart';
 import 'package:oficial_petti/Widgets/background.dart';
 import 'package:oficial_petti/Widgets/buttons.dart';
@@ -117,19 +118,13 @@ class _HomeState extends State<Home> {
                                 '\nCRMV - 1234-5'
                                 '\nClinica Geral Ortopedista'
                                 '\nSão Bernado do Campo - SP',
-                                style: GoogleFonts.roboto(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: AppColors.black,
-                                ),
+                                style: AppFonts.f12w400black,
                               ),
                             )
                           ],
                         ),
                         Container(
-
                           child: Column(
-
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Container(
