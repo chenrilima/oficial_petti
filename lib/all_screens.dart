@@ -46,44 +46,38 @@ class _AllScreensState extends State<AllScreens> {
       //   ],
       //),
       body: Container(
-
         child: _screens[_currentIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (indice) {
-            setState(() {
-              _currentIndex = indice;
-            });
-          },
-
-          type: BottomNavigationBarType.shifting,
-          fixedColor: Colors.blueGrey,
-          backgroundColor: Colors.white,
-          unselectedItemColor: Colors.blueGrey,
-
-          items: [
-            BottomNavigationBarItem(
-              title: Text("Home"),
-              icon: Icon(Icons.home),
-
-            ),
-            BottomNavigationBarItem(
-              title: Text("Profissionais"),
-              icon: Icon(Icons.contact_mail),
-
-            ),
-            BottomNavigationBarItem(
-              title: Text("Empresas"),
-              icon: Icon(Icons.analytics_outlined),
-
-            ),
-            BottomNavigationBarItem(
-              title: Text("Perfil"),
-              icon: Icon(Icons.account_circle),
-
-            ),
-          ]),
+        currentIndex: _currentIndex,
+        onTap: (indice) {
+          setState(() {
+            _currentIndex = indice;
+          });
+        },
+        type: BottomNavigationBarType.shifting,
+        fixedColor: Colors.blueGrey,
+        backgroundColor: Colors.white,
+        unselectedItemColor: Colors.blueGrey,
+        items: [
+          BottomNavigationBarItem(
+            label: ("Home"),
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: ("Profissionais"),
+            icon: Icon(Icons.contact_mail),
+          ),
+          BottomNavigationBarItem(
+            label: ("Empresas"),
+            icon: Icon(Icons.analytics_outlined),
+          ),
+          BottomNavigationBarItem(
+            label: ("Perfil"),
+            icon: Icon(Icons.account_circle),
+          ),
+        ],
+      ),
     );
   }
 }
