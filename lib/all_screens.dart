@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oficial_petti/Screens/Companies.dart';
-import 'package:oficial_petti/Screens/account.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oficial_petti/Screens/profile.dart';
 import 'package:oficial_petti/Screens/register_professional.dart';
 import 'package:oficial_petti/Screens/home.dart';
@@ -14,70 +13,148 @@ class AllScreens extends StatefulWidget {
 }
 
 class _AllScreensState extends State<AllScreens> {
-  int _currentIndex = 0;
-  String _result = "";
+  int currentIndex = 0;
+  String result = "";
+
+  var pages = [Home(), RegisterProfessional(), RegisterCompany(), Profile()];
+
+  var _appPageController = PageController();
+
+  setBottomBarIndex(index) {
+    setState(() {
+      currentIndex = index;
+    });
+    _appPageController.animateToPage(index,
+        duration: Duration(milliseconds: 700), curve: Curves.ease);
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _screens = <Widget>[
-      Home(),
-      RegisterProfessional(),
-      RegisterCompany(),
-      Profile()
-    ];
-
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Color(0xff00C29D),
-      //   iconTheme: IconThemeData(
-      //     color: Color(0xff00C29D),
-      //   ),
-      //   title: Image.asset(
-      //     "images/pawdogicon.png",
-      //     width: 80,
-      //     height: 50,
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       icon: Icon(Icons.logout),
-      //       color: Colors.black,
-      //       onPressed: () {},
-      //     ),
-      //   ],
-      //),
-      body: Container(
-        child: _screens[_currentIndex],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (indice) {
+      backgroundColor: AppColors.white,
+      body: PageView(
+        scrollDirection: Axis.horizontal,
+        children: pages,
+        onPageChanged: (index) {
           setState(() {
-            _currentIndex = indice;
+            currentIndex = index;
           });
         },
-        type: BottomNavigationBarType.shifting,
-        fixedColor: Colors.blueGrey,
-        backgroundColor: Colors.white,
-        unselectedItemColor: Colors.blueGrey,
-        items: [
-          BottomNavigationBarItem(
-            label: ("Home"),
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: ("Profissionais"),
-            icon: Icon(Icons.contact_mail),
-          ),
-          BottomNavigationBarItem(
-            label: ("Empresas"),
-            icon: Icon(Icons.analytics_outlined),
-          ),
-          BottomNavigationBarItem(
-            label: ("Perfil"),
-            icon: Icon(Icons.account_circle),
-          ),
-        ],
+        controller: _appPageController,
+      ),
+      bottomNavigationBar: Container(
+        width: size.width,
+        height: 80.h,
+        child: Stack(
+          //overflow: Overflow.visible,
+          children: [
+            CustomPaint(
+              size: Size(size.width, 80),
+              painter: BNBCustomPainter(),
+            ),
+            Center(
+              heightFactor: 0.6,
+              child: FloatingActionButton(
+                  backgroundColor: currentIndex == 0
+              ? AppColors.green
+                  : Colors.grey.shade400,
+                  child: Icon(Icons.search), // Analyze Button
+                  elevation: 0.1,
+                  onPressed: () {}),
+            ),
+            Container(
+              width: size.width,
+              height: 80.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.home,
+                      color: currentIndex == 0
+                          ? AppColors.green
+                          : Colors.grey.shade400,
+                    ),
+                    onPressed: () {
+                      setBottomBarIndex(0);
+                    },
+                    splashColor: Colors.white,
+                  ),
+                  IconButton(
+                      icon: Icon(
+                        Icons.article,
+                        color: currentIndex == 1
+                            ? AppColors.green
+                            : Colors.grey.shade400,
+                      ),
+                      onPressed: () {
+                        setBottomBarIndex(1);
+                      }),
+                  Container(
+                    width: size.width * 0.20,
+                  ),
+                  IconButton(
+                      icon: Icon(
+                        Icons.business,
+                        color: currentIndex == 2
+                            ? AppColors.green
+                            : Colors.grey.shade400,
+                      ),
+                      onPressed: () {
+                        setBottomBarIndex(2);
+                      }),
+                  IconButton(
+                      icon: Icon(
+                        Icons.person,
+                        color: currentIndex == 3
+                            ? AppColors.green
+                            : Colors.grey.shade400,
+                      ),
+                      onPressed: () {
+                        setBottomBarIndex(3);
+                      }),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
+  }
+
+  void _onTappedBar(int value) {
+    setState(() {
+      currentIndex = value;
+    });
+    _appPageController.jumpToPage(value);
+  }
+}
+
+class BNBCustomPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = new Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
+
+    Path path = Path();
+    path.moveTo(0, 20); // Start
+    path.quadraticBezierTo(size.width * 0.20, 0, size.width * 0.35, 0);
+    path.quadraticBezierTo(size.width * 0.40, 0, size.width * 0.40, 20);
+    path.arcToPoint(Offset(size.width * 0.60, 20),
+        radius: Radius.circular(20.0), clockwise: false);
+    path.quadraticBezierTo(size.width * 0.60, 0, size.width * 0.65, 0);
+    path.quadraticBezierTo(size.width * 0.80, 0, size.width, 20);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+    path.lineTo(0, 20);
+    canvas.drawShadow(path, Colors.black, 5, true);
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }

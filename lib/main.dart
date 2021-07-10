@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oficial_petti/Utils/param.dart';
 import 'package:provider/provider.dart';
 
@@ -15,8 +16,11 @@ void main() {
     ],
       child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AllScreens(),
+      home: ScreenUtilInit(
+        builder: () => AllScreens(),
+        designSize: Size(375, 812),
   ),
+    ),
     ),
   );
 }
