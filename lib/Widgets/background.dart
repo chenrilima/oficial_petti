@@ -12,10 +12,11 @@ class Background extends StatelessWidget {
   Widget build(BuildContext context) {
     double widscreen = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          color: AppColors.green,
-          padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
+      body: Container(
+        color: AppColors.green,
+        height: widscreen * 1,
+        padding: const EdgeInsets.only(top:50,left: 10, right: 10),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

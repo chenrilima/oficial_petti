@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oficial_petti/Screens/Companies.dart';
 import 'package:oficial_petti/Screens/account.dart';
+import 'package:oficial_petti/Screens/profile.dart';
 import 'package:oficial_petti/Screens/register_professional.dart';
 import 'package:oficial_petti/Screens/home.dart';
 import 'package:oficial_petti/Utils/appcolors.dart';
@@ -22,7 +23,7 @@ class _AllScreensState extends State<AllScreens> {
       Home(),
       RegisterProfessional(),
       RegisterCompany(),
-      Account()
+      Profile()
     ];
 
     return Scaffold(
