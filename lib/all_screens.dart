@@ -58,7 +58,7 @@ class _AllScreensState extends State<AllScreens> {
               child: FloatingActionButton(
                   backgroundColor: currentIndex == 0
               ? AppColors.green
-                  : Colors.grey.shade400,
+                  : AppColors.grey,
                   child: Icon(Icons.search), // Analyze Button
                   elevation: 0.1,
                   onPressed: () {}),
@@ -74,7 +74,7 @@ class _AllScreensState extends State<AllScreens> {
                       Icons.home,
                       color: currentIndex == 0
                           ? AppColors.green
-                          : Colors.grey.shade400,
+                          : AppColors.grey,
                     ),
                     onPressed: () {
                       setBottomBarIndex(0);
@@ -86,7 +86,7 @@ class _AllScreensState extends State<AllScreens> {
                         Icons.article,
                         color: currentIndex == 1
                             ? AppColors.green
-                            : Colors.grey.shade400,
+                            : AppColors.grey,
                       ),
                       onPressed: () {
                         setBottomBarIndex(1);
@@ -99,7 +99,7 @@ class _AllScreensState extends State<AllScreens> {
                         Icons.business,
                         color: currentIndex == 2
                             ? AppColors.green
-                            : Colors.grey.shade400,
+                            : AppColors.grey,
                       ),
                       onPressed: () {
                         setBottomBarIndex(2);
@@ -109,7 +109,7 @@ class _AllScreensState extends State<AllScreens> {
                         Icons.person,
                         color: currentIndex == 3
                             ? AppColors.green
-                            : Colors.grey.shade400,
+                            : AppColors.grey,
                       ),
                       onPressed: () {
                         setBottomBarIndex(3);
@@ -135,7 +135,7 @@ class BNBCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = new Paint()
-      ..color = Colors.white
+      ..color = AppColors.white
       ..style = PaintingStyle.fill;
 
     Path path = Path();
