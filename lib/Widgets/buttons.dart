@@ -6,7 +6,6 @@ class Buttons extends StatelessWidget {
   Function onPressed;
   String text;
 
-
   Buttons({this.onPressed, this.text});
 
   @override
